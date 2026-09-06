@@ -413,7 +413,304 @@
 
             #endregion
 
-         
+            #region Switch
+
+            #region Switch With int
+
+            // Jump Table
+
+            //Console.WriteLine("Enter a number: ");
+            //int number = Convert.ToInt32(Console.ReadLine());
+
+            /*
+             * Does Every switch always use a jump table? =
+             * Answer: No not always, It dependes on what your are switching on
+             * 
+             * Switch Type                                                      Implementation
+             * ----------------------------------------------------------------------------------
+             * int or enum values                                               |  Jump Table
+             * strings (C# 7.0 and later)                                       |  Hash based table
+             * Pattern matching (<, >, types)                                   |  If-Else Chain
+             * number of cases is small (less than 3)                           |  If-Else Chain
+             * The C# compiler decides the best implementation based on the switch expression and the case labels.
+             */
+
+
+            //switch (number)
+            //{
+            //    case 1:
+            //        Console.WriteLine("You entered 1.");
+            //        break;
+            //    case 2:
+            //        Console.WriteLine("You entered 2.");
+            //        break;
+            //    case 4:
+            //        Console.WriteLine("You entered 4.");
+            //        break;
+            //    case 100:
+            //        Console.WriteLine("You entered 100.");
+            //        break;
+            //    case 200:
+            //        Console.WriteLine("You entered 200.");
+            //        break;
+            //    case 150:
+            //        Console.WriteLine("You entered 150.");
+            //        break;
+            //    default:
+            //        Console.WriteLine("You entered a number other than 1, 2, or 3.");
+            //        break;
+            //}
+
+            #endregion
+
+            #region Switch With String
+
+            //string role = Console.ReadLine();
+            //string access;
+
+            //switch (role)
+            //{
+            //    case "Admin":
+            //        Console.WriteLine("You have full access.");
+            //        break;
+            //    // No duplicate case labels are allowed in a switch statement. 
+            //    // Compiler uses Equals() and GetHashCode() methods to check for duplicate case labels.
+            //    //case "Admin":
+            //    //    Console.WriteLine("You have full access.");
+            //    //    break;
+            //    case "Manager":
+            //        Console.WriteLine("You have limited access.");
+            //        break;
+            //    case "User":
+            //        Console.WriteLine("You have basic access.");
+            //        break;
+            //    default:
+            //        Console.WriteLine("Invalid role.");
+            //        break;
+            //}
+
+            #endregion
+
+            #region Switch with type pattern + case guard (when clause)
+
+            //object grade = 90.5f;
+
+            //// From C# 7.0, you can use pattern matching.
+            //// We can store value in temporary variable and use it in the case guard (when clause).
+
+            //switch (grade)
+            //{
+            //    case int g when g >= 90:
+            //        Console.WriteLine($"Grade is an integer: {g}");
+            //        Console.WriteLine("Excellent!");
+            //        break;
+            //    case float g when g >= 85 :
+            //        Console.WriteLine($"Grade is a float: {g}");
+            //        Console.WriteLine("Very Good!");
+            //        break;
+            //    case double g when g >= 50:
+            //        Console.WriteLine($"Grade is a double: {g}");
+            //        Console.WriteLine("Good!");
+            //        break;
+            //    default: 
+            //        Console.WriteLine("Grade is not a valid number.");
+            //        break;
+
+            //}
+
+            #endregion
+
+            #region Switch Expression
+
+            // Syntax sugar introduced in C# 8.0
+            // Used when you want to return a value based on a condition.
+            // If you want to perform instructions based on a condition, use switch statement.
+
+            //char grade = 'A';
+
+            //string result = grade switch
+            //{
+            //    'A' => "Excellent!",
+            //    'B' => "Very Good!",
+            //    'C' => "Good!",
+            //    'D' => "Pass",
+            //    'F' => "Fail",
+            //    _ => "Invalid grade"
+            //};
+
+            //Console.WriteLine(result);
+
+            #endregion
+
+            #endregion
+
+            #region Ternary Operator
+
+            // Conditional operator, short form of if-else statement, introduced in C# 2.0
+            // used for simple conditional expressions that return a value based on a condition.
+            // Syntax: condition ? value_if_true : value_if_false;
+            // if you have more than two cases, if-else statement is more readable than ternary operator.
+
+            //int cardsNumber = 100;
+            //string result = cardsNumber > 50 ? "You have more than 50 cards." : "You have 50 or less cards.";
+            //Console.WriteLine(result);
+
+            #endregion
+
+
+
+
+            #endregion
+
+            #endregion
+
+            #region Loops
+            /*
+             * Code to be executed multiple times without repeating the code
+             * From performance perspective, repeating the code is more effecient (less steps)
+             * From maintainability perspective, loops are more effecient (easy to fix and refactor) and it is easy for extension
+             * We have 4 types of loops in C#:
+             *  1. for loop: used when we know the number of iterations in advance
+             *  2. while loop: used when we need the code to be executed as long as a condition is true
+             *  3. do-while loop: used when we want to execute the loop body at least once, then it works like a while loop
+             *  4. foreach loop: used to iterate over a collection - Will be used heavilty with C# Collections
+             */
+
+            // 
+
+            // How many steps you wrote to print from 1 to 10? 10 steps
+            //Console.WriteLine(1);
+            //Console.WriteLine(2);
+            //Console.WriteLine(3);
+            //Console.WriteLine(4);
+            //Console.WriteLine(5);
+            //Console.WriteLine(6);
+            //Console.WriteLine(7);
+            //Console.WriteLine(8);
+            //Console.WriteLine(9);
+            //Console.WriteLine(10);
+
+            // How many steps you wrote to print from 1 to 10? 
+            // * in first iteration
+            //      1. int i = 1; // initialization
+            //      2. i <= 10; // condition
+            //      3. Console.WriteLine(i); // code to be executed
+            //      4. i++; // increment
+            //
+            // * in remaining iterations
+            //      1. i <= 10; // condition
+            //      2. Console.WriteLine(i); // code to be executed
+            //      3. i++; // increment
+            // 
+            // * last check when i = 11, the condition fails and the loop ends
+            // Total steps = 4 + (3 * 9) + 1 = 32 steps
+            //for (int i = 1; i <= 10; i++)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            #region  For Loop Examples
+
+            // Loop through an array of numbers and print each number
+            // Try static number first then mak it numbers.Length
+
+            //int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //for (int index = 0; index < numbers.Length; index++)
+            //{
+            //    Console.WriteLine(numbers[index]);
+            //}
+
+            //// Multiplication table for 1 to 3
+            //for (int row = 1; row <= 3; row++)
+            //{
+            //    for (int col = 1; col <= 3; col++)
+            //    {
+            //        Console.WriteLine($"{row * col}\\t");
+            //    }
+
+            //    Console.WriteLine();
+            //}
+
+            #endregion
+
+            #region Foreach
+
+            /** Foreach loop is used to iterate over a collection, such as an array or a list.
+             * It is more readable than a for loop, because it automatically handles the index and the length of the collection.
+             * It will call GetEnumerator() that returns an anumerator that property [Current] and method [MoveNext()] to iterate over the collection.
+             * For each iteration, it calls:
+             *      - 1. Curent Propertyto get the current element
+             *      - 2. MoveNext() to move to the next element
+             * 
+             * - Pitfalls:
+             *      - 1. Performance: Foreach loop is slower than a for loop, because it has to make function calls in each iteration
+             *      - 2. Read-only: Foreach loop does not allow modifying the collection, as you have a copy of the array element not the actual element in the collection.
+             *      - 3. Index: Foreach loop does not provide access to the index of the current element.
+             */
+
+            //int[] numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            //foreach (int number in numbers)
+            //{
+            //    //number++; // Error: Cannot modify the iteration variable 'number' because it is a foreach iteration variable
+            //    Console.WriteLine(number);
+            //}
+
+
+
+            #endregion
+
+            #region While 
+
+            /*
+             * While loop is used to execute a block of code as long as a condition is true.
+             * It is more flexible than a for loop, because it does not require an initialization or an increment.
+             * It is useful when we do not know the number of iterations in advance.
+             * 
+             */
+
+            // Example: Repeat asking the user to enter a number until the user enters a valid number.
+
+            //int number;
+            //Console.WriteLine("Enter a number: ");
+
+            //bool isParsed = int.TryParse(Console.ReadLine(), out number);
+
+            //while (!isParsed)
+            //{
+            //    Console.WriteLine("Invalid input. Please enter a valid number: ");
+            //    isParsed = int.TryParse(Console.ReadLine(), out number);
+            //}
+
+            //Console.WriteLine(number);
+
+
+
+            #endregion
+
+            #region Do-While
+
+            /*
+             * Do-While loop is used to execute a block of code at least once, and then repeat the execution as long as a condition is true.
+             * It is useful when we want to execute the loop body at least once, regardless of the condition.
+             * 
+             */
+
+            // Example: Repeat asking the user to enter a number until the user enters a valid number.
+
+            //int number;
+            //bool isParsed;
+
+            //do
+            //{
+            //    Console.WriteLine("Enter a number: ");
+            //    isParsed = int.TryParse(Console.ReadLine(), out number);
+            //} while (!isParsed);
+
+            //Console.WriteLine(number);
+
+
+
             #endregion
 
             #endregion
